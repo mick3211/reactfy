@@ -6,21 +6,24 @@ export const SidebarContainer = styled('aside', {
     resize: 'horizontal',
     overflow: 'hidden',
     minWidth: 'fit-content',
-    px: 2,
-    pt: 6,
+    p: 2,
     color: '$slate11',
     fontSize: 14,
 
     'a:hover': {
         color: '$slate12',
     },
+
+    ul: {
+        listStyleType: 'none',
+        display: 'flex',
+        flexDirection: 'column',
+    },
 });
 
 export const NavList = styled('ul', {
-    listStyleType: 'none',
-    display: 'flex',
-    flexDirection: 'column',
-    fontWeight: 600,
+    fontWeight: 700,
+    mt: 2,
 
     '& > li > a': {
         display: 'flex',
@@ -33,5 +36,19 @@ export const NavList = styled('ul', {
             width: 20,
             height: 20,
         },
+
+        '&.active': {
+            color: 'white',
+        },
+    },
+});
+
+export const PlaylistsWrapper = styled('ul', {
+    overflowY: 'auto',
+
+    '& > li > a': {
+        display: 'block',
+        color: 'inherit',
+        py: 1,
     },
 });

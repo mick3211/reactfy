@@ -13,7 +13,7 @@ export const TriggerStyled = styled(Popover.Trigger, {
     border: '2px solid black',
     cursor: 'pointer',
 
-    '&:hover': {
+    '&:hover, &[data-state=open]': {
         backgroundColor: '$slate3',
         borderColor: '$slate3',
     },
