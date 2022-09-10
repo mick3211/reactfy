@@ -29,7 +29,7 @@ const navLinks = [
 ];
 
 export const Sidebar: React.FC<{ currentPage: string }> = ({ currentPage }) => {
-    const { data } = useApiSWR<{
+    const { data, error } = useApiSWR<{
         href: string;
         items: PlaylistInterface[];
     }>('/me/playlists', { method: 'GET' });
@@ -67,10 +67,12 @@ export const Sidebar: React.FC<{ currentPage: string }> = ({ currentPage }) => {
                     ))}
                 </PlaylistsWrapper>
             ) : (
-                <div style={{ textAlign: 'center' }}>
-                    <ExclamationTriangleIcon width={32} height={32} />
-                    <p>Erro ao carregar playlists</p>
-                </div>
+                error && (
+                    <div style={{ textAlign: 'center' }}>
+                        <ExclamationTriangleIcon width={32} height={32} />
+                        <p>Erro ao carregar playlists</p>
+                    </div>
+                )
             )}
         </SidebarContainer>
     );
