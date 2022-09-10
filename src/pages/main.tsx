@@ -13,7 +13,7 @@ export const MainPage: React.FC = () => {
     return (
         <MainGrid>
             <Header />
-            <Sidebar />
+            <Sidebar currentPage={location.pathname} />
             <main>
                 <Outlet />
             </main>

@@ -1,14 +1,14 @@
 import { NavList, PlaylistsWrapper, SidebarContainer } from './Sidebar.styled';
+import { Divider } from 'ui/components/dataDisplay/Divider/Divider';
+import { useApiSWR } from 'data/hooks/useApiSWR';
+import { PlaylistInterface } from 'data/types/PlaylistInterface';
+import { Link } from 'react-router-dom';
 import {
     ExclamationTriangleIcon,
     HomeIcon,
     MagnifyingGlassIcon,
     RowsIcon,
 } from '@radix-ui/react-icons';
-import { Divider } from 'ui/components/dataDisplay/Divider/Divider';
-import { useApiSWR } from 'data/hooks/useApiSWR';
-import { PlaylistInterface } from 'data/types/PlaylistInterface';
-import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
     {
@@ -28,13 +28,12 @@ const navLinks = [
     },
 ];
 
-export const Sidebar: React.FC = () => {
+export const Sidebar: React.FC<{ currentPage: string }> = ({ currentPage }) => {
     const { data } = useApiSWR<{
         href: string;
         items: PlaylistInterface[];
     }>('/me/playlists', { method: 'GET' });
     const playlists = data?.items;
-    const location = useLocation();
 
     return (
         <SidebarContainer>
@@ -46,9 +45,7 @@ export const Sidebar: React.FC = () => {
                             <Link
                                 to={link.href}
                                 className={
-                                    location.pathname === link.href
-                                        ? 'active'
-                                        : ''
+                                    currentPage === link.href ? 'active' : ''
                                 }
                             >
                                 <link.Icon />
