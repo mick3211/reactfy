@@ -33,5 +33,6 @@ export const LoginService = {
 
     logout() {
         LocalStorage.clear('access_token');
+        LocalStorage.clear('refresh_token');
     },
 };

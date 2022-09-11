@@ -1,6 +1,9 @@
 import { CaretLeftIcon, CaretRightIcon } from '@radix-ui/react-icons';
 import { userContext } from 'data/contexts/UserContext';
-import { ButtonsContainer, HeaderContainer } from 'pages/Header.styled';
+import {
+    ButtonsContainer,
+    HeaderContainer,
+} from 'ui/partials/Header/Header.styled';
 import { useContext } from 'react';
 import { UserAvatarMenu } from 'ui/components/dataDisplay/UserAvatarMenu/UserAvatarMenu';
 import { Button } from 'ui/components/inputs/Button/Button';

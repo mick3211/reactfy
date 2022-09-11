@@ -9,5 +9,10 @@ export const MainGrid = styled('div', {
 
     '& > main': {
         overflowY: 'auto',
+        mt: -8,
+    },
+
+    '& > main > :first-child': {
+        paddingTop: 'calc(var(--pt) + 64px)',
     },
 });

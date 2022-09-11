@@ -1,5 +1,6 @@
 import { CaretDownIcon } from '@radix-ui/react-icons';
 import { Portal, Root } from '@radix-ui/react-popover';
+import { LoginService } from 'data/services/LoginService';
 import { Divider } from '../Divider/Divider';
 import { UserAvatar } from '../UserAvatar/UserAvatar';
 import { ContentStyled, TriggerStyled } from './UserAvatarMenu.styled';
@@ -13,6 +14,11 @@ export const UserAvatarMenu: React.FC<UserAvatarMenuProps> = ({
     name,
     img,
 }) => {
+    const Logout = () => {
+        LoginService.logout();
+        window.location.reload();
+    };
+
     return (
         <Root>
             <TriggerStyled>
@@ -28,7 +34,7 @@ export const UserAvatarMenu: React.FC<UserAvatarMenuProps> = ({
                         <li>Sessão particular</li>
                         <li>Configurações</li>
                         <Divider />
-                        <li>Sair</li>
+                        <li onClick={Logout}>Sair</li>
                     </ul>
                 </ContentStyled>
             </Portal>

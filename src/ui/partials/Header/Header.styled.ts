@@ -1,7 +1,7 @@
 import { styled } from 'ui/styles/theme';
 
 export const HeaderContainer = styled('header', {
-    backgroundColor: '$slate1',
+    zIndex: 1000,
     py: 1.5,
     px: 4,
     display: 'flex',
