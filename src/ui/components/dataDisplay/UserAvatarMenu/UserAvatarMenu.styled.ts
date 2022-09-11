@@ -42,6 +42,9 @@ export const ContentStyled = styled(Popover.Content, {
     '& > ul > li': {
         p: 1.5,
         borderRadius: 4,
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
 
     '& > ul > li:hover': {

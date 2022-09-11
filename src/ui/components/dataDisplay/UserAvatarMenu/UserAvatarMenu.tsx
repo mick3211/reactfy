@@ -1,4 +1,4 @@
-import { CaretDownIcon } from '@radix-ui/react-icons';
+import { CaretDownIcon, ExternalLinkIcon } from '@radix-ui/react-icons';
 import { Portal, Root } from '@radix-ui/react-popover';
 import { LoginService } from 'data/services/LoginService';
 import { Divider } from '../Divider/Divider';
@@ -29,7 +29,9 @@ export const UserAvatarMenu: React.FC<UserAvatarMenuProps> = ({
             <Portal>
                 <ContentStyled sideOffset={8} align="end">
                     <ul>
-                        <li>Conta</li>
+                        <li>
+                            Conta <ExternalLinkIcon />
+                        </li>
                         <li>Perfil</li>
                         <li>Sessão particular</li>
                         <li>Configurações</li>
