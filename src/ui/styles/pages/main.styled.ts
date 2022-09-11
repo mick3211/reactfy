@@ -13,6 +13,7 @@ export const MainGrid = styled('div', {
     },
 
     '& > main > :first-child': {
+        '--pt': '32px',
         paddingTop: 'calc(var(--pt) + 64px)',
     },
 });

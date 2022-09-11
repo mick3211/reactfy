@@ -1,6 +1,7 @@
 import { LoginCallback } from 'pages/login/callback';
 import { LoginPage } from 'pages/login/index';
 import { MainPage } from 'pages/main';
+import { PlaylistDetailPage } from 'pages/playlists/playlistDetail';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { AnonymousRoute } from 'ui/components/utils/AnonymousRoute';
 import { PrivateRoute } from 'ui/components/utils/PrivateRoute';
@@ -21,6 +22,10 @@ export const App: React.FC = () => {
                 }
             >
                 <Route path="home" element={<HomePage />} />
+                <Route
+                    path="playlists/:playlistId"
+                    element={<PlaylistDetailPage />}
+                />
             </Route>
             <Route
                 path="/login"
