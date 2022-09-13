@@ -44,7 +44,11 @@ export interface PlaylistFullInterface
     tracks: {
         href: string;
         total: number;
-        items: TrackInterface[];
+        items: {
+            added_at: string;
+            is_local: boolean;
+            track: TrackInterface;
+        }[];
         limit: number;
         offset: number;
         next?: string;

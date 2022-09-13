@@ -6,7 +6,7 @@ export interface TrackInterface {
     artists: ArtistInterface[];
     avaliable_markets: string[];
     disc_number?: number;
-    duration: number;
+    duration_ms: number;
     explicit: boolean;
     external_urls: {
         spotify: string;
