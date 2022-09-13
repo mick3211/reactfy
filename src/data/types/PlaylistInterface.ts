@@ -1,3 +1,5 @@
+import { TrackInterface } from './TrackInterface';
+
 export interface PlaylistInterface {
     collaborative: boolean;
     description: string;
@@ -27,8 +29,25 @@ export interface PlaylistInterface {
     snapshot_id: string;
     tracks: {
         href: string;
-        total: 465;
+        total: number;
     };
     type: string;
     uri: string;
+}
+
+export interface PlaylistFullInterface
+    extends Omit<PlaylistInterface, 'tracks'> {
+    followers: {
+        href: null;
+        total: number;
+    };
+    tracks: {
+        href: string;
+        total: number;
+        items: TrackInterface[];
+        limit: number;
+        offset: number;
+        next?: string;
+        prevous?: string;
+    };
 }
