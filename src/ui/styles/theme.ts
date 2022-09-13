@@ -75,6 +75,9 @@ const globalStyles = globalCss({
         color: 'white',
         userSelect: 'none',
     },
+    a: {
+        color: 'inherit',
+    },
     /* width */
     '::-webkit-scrollbar': {
         width: 12,

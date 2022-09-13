@@ -1,5 +1,5 @@
 import { blackA, whiteA } from '@radix-ui/colors';
-import { styled } from '@stitches/react';
+import { styled } from '../theme';
 
 export const HeaderWrapper = styled('div', {
     backgroundImage: 'linear-gradient(180deg, red 0%, $slate2 100%)',
@@ -16,27 +16,38 @@ export const HeaderWrapper = styled('div', {
 });
 
 export const PlaylistInformation = styled('div', {
-    span: {
+    '& > span': {
         fontSize: 12,
         textTransform: 'uppercase',
         fontWeight: 500,
         display: 'block',
-        marginBottom: 8,
+        mb: 1,
     },
 
     h2: {
         fontSize: 64,
+        mb: 3,
     },
 
-    p: {
-        marginTop: 24,
+    '& p': {
+        mb: 2,
         color: `${whiteA.whiteA11}`,
+    },
+
+    a: {
+        fontWeight: 'bold',
+        color: 'white',
+
+        '&:hover': {
+            textDecoration: 'underline',
+        },
     },
 });
 
 export const SongsWrapper = styled('div', {
     backgroundColor: blackA.blackA8,
     transform: 'translateY(-208px)',
-    height: 500,
-    padding: '16px 32px',
+    marginBottom: -208,
+    py: 2,
+    px: 4,
 });
