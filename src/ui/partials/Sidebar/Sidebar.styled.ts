@@ -7,6 +7,7 @@ export const SidebarContainer = styled('aside', {
     overflow: 'hidden',
     minWidth: 'fit-content',
     p: 2,
+    px: 3,
     color: '$slate11',
     fontSize: 14,
 
