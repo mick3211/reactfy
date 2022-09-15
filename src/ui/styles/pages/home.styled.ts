@@ -4,6 +4,9 @@ export const HomeContainer = styled('div', {
     color: 'white',
     p: 4,
     listStyleType: 'none',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 40,
 });
 
 export const Greetings = styled('h2', {
@@ -15,7 +18,6 @@ export const Greetings = styled('h2', {
 export const RecentsContainer = styled('div', {
     backgroundImage: 'linear-gradient(180deg, var(--color) 0%, $slate2 80%)',
     p: 4,
-    '--pt': '32px',
 });
 
 export const RecentsList = styled('ul', {

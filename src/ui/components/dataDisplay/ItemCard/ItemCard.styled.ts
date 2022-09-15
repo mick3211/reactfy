@@ -4,26 +4,28 @@ import { styled } from 'ui/styles/theme';
 
 export const Wrapper = styled(Link, {
     display: 'inline-block',
-    maxWidth: 200,
-    p: 1.5,
+    p: 2,
     backgroundColor: whiteA.whiteA3,
     transitionProperty: 'background-color',
     transitionDuration: '.3s',
     borderRadius: 8,
-    position: 'relative',
+
+    div: {
+        position: 'relative',
+        transitionDuration: 'inherit',
+        mb: 1,
+    },
 
     img: {
         borderRadius: 4,
         width: '100%',
-        mb: 1,
     },
 
     h6: {
-        fontSize: 16,
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
+        fontSize: '1rem',
         whiteSpace: 'nowrap',
-
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
         mb: 0.5,
     },
 
@@ -31,15 +33,13 @@ export const Wrapper = styled(Link, {
         display: 'block',
         fontSize: 14,
         color: '$slate11',
-        maxHeight: '2.6em',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
+        lineHeight: 1.6,
     },
 
     button: {
         position: 'absolute',
-        right: 16,
-        top: '50%',
+        right: 8,
+        bottom: 8,
         opacity: 0,
         transform: 'translateY(10%)',
         transitionProperty: 'opacity, transform',
@@ -54,4 +54,12 @@ export const Wrapper = styled(Link, {
             transform: 'none',
         },
     },
+});
+
+export const ClampText = styled('div', {
+    '-webkit-line-clamp': 2,
+    '-webkit-box-orient': 'vertical',
+    display: '-webkit-box',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
 });

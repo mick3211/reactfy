@@ -1,6 +1,6 @@
 import { PlayIcon } from '@radix-ui/react-icons';
 import { Button } from 'ui/components/inputs/Button/Button';
-import { Wrapper } from './ItemCard.styled';
+import { ClampText, Wrapper } from './ItemCard.styled';
 
 interface ItemCardProps {
     img: string;
@@ -21,14 +21,18 @@ export const ItemCard: React.FC<ItemCardProps> = ({
 }) => {
     return (
         <Wrapper to={href}>
-            {playButton && (
-                <Button shape="circular">
-                    <PlayIcon width={32} height={32} />
-                </Button>
-            )}
-            <img src={img} alt={alt} />
+            <div>
+                <img src={img} alt={alt || title} />
+                {playButton && (
+                    <Button shape="circular">
+                        <PlayIcon width={32} height={32} />
+                    </Button>
+                )}
+            </div>
             <h6>{title}</h6>
-            <span dangerouslySetInnerHTML={{ __html: description || '' }} />
+            <ClampText>
+                <span dangerouslySetInnerHTML={{ __html: description || '' }} />
+            </ClampText>
         </Wrapper>
     );
 };
