@@ -1,5 +1,6 @@
 import { PlayIcon } from '@radix-ui/react-icons';
 import { useHomePage } from 'data/hooks/pages/useHome.page';
+import { ItemCard } from 'ui/components/dataDisplay/ItemCard/ItemCard';
 import { Button } from 'ui/components/inputs/Button/Button';
 import {
     Greetings,
@@ -9,7 +10,7 @@ import {
 } from 'ui/styles/pages/home.styled';
 
 export const HomePage: React.FC = () => {
-    const { greetings, highlightColor, recentlyPlayed } = useHomePage();
+    const { greetings, highlightColor, recentlyPlayed, data } = useHomePage();
 
     return (
         <>
@@ -27,7 +28,20 @@ export const HomePage: React.FC = () => {
                     ))}
                 </RecentsList>
             </RecentsContainer>
-            <HomeContainer></HomeContainer>
+            <HomeContainer>
+                <h4>{data?.message}</h4>
+                {data?.playlists.items.map(playlist => (
+                    <ItemCard
+                        href={`/playlists/${playlist.id}`}
+                        key={playlist.id}
+                        playButton
+                        title={playlist.name}
+                        img={playlist.images?.[0]?.url || ''}
+                        alt={playlist.name}
+                        description={playlist.description}
+                    />
+                ))}
+            </HomeContainer>
         </>
     );
 };

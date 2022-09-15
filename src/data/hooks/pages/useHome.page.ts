@@ -1,3 +1,4 @@
+import { PlaylistInterface } from 'data/types/PlaylistInterface';
 import { TrackInterface } from 'data/types/TrackInterface';
 import { useApiSWR } from '../useApiSWR';
 
@@ -16,11 +17,34 @@ export function useHomePage() {
         params: { limit: 6 },
     });
 
-    console.log(recentlyPlayed);
+    const { data: categories } = useApiSWR<{
+        href: string;
+        items: { track: TrackInterface }[];
+    }>('/browse/categories', {
+        method: 'GET',
+        params: { limit: 10, country: 'BR', locale: 'pt-BR' },
+    });
+
+    const { data } = useApiSWR<{
+        message: string;
+        playlists: {
+            href: string;
+            items: PlaylistInterface[];
+        };
+    }>('/browse/featured-playlists', {
+        method: 'GET',
+        params: {
+            limit: 10,
+            country: 'BR',
+            locale: 'pt-BR',
+            timestamp: new Date().toISOString(),
+        },
+    });
 
     return {
         greetings,
         highlightColor,
         recentlyPlayed,
+        data,
     };
 }
