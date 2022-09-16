@@ -28,14 +28,6 @@ export function useHomePage() {
         params: { limit: 6 },
     });
 
-    // const { data: categories } = useApiSWR<{
-    //     href: string;
-    //     items: { href: string; id: string; name: string }[];
-    // }>('/browse/categories', {
-    //     method: 'GET',
-    //     params: { limit: 10, country: 'BR', locale: 'pt-BR' },
-    // });
-
     const { data: featured } = useApiSWR<{
         message: string;
         playlists: {
@@ -45,7 +37,7 @@ export function useHomePage() {
     }>('/browse/featured-playlists', {
         method: 'GET',
         params: {
-            limit: 5,
+            limit: 10,
             country: 'BR',
             locale: 'pt-BR',
             timestamp: currentDate.toISOString(),
