@@ -7,16 +7,22 @@ import {
 import { useContext } from 'react';
 import { UserAvatarMenu } from 'ui/components/dataDisplay/UserAvatarMenu/UserAvatarMenu';
 import { Button } from 'ui/components/inputs/Button/Button';
-import { useMatch, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+    isOpaque?: boolean;
+}
+
+export const Header: React.FC<HeaderProps> = ({ isOpaque = true }) => {
     const {
         userState: { user },
     } = useContext(userContext);
     const navigate = useNavigate();
 
     return (
-        <HeaderContainer>
+        <HeaderContainer
+            css={{ backgroundColor: isOpaque ? '$slate2' : 'transparent' }}
+        >
             <ButtonsContainer>
                 <Button
                     shape="circular"
