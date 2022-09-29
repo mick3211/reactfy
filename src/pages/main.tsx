@@ -1,6 +1,8 @@
+import { PlaybackProvider } from 'data/contexts/PlaybackContext';
 import { useEffect, useRef, useState } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { Header } from 'ui/partials/Header/Header';
+import { Player } from 'ui/partials/Player/Player';
 import { Sidebar } from 'ui/partials/Sidebar/Sidebar';
 import { MainGrid } from 'ui/styles/pages/main.styled';
 
@@ -16,7 +18,7 @@ export const MainPage: React.FC = () => {
     useEffect(() => {
         const mainElement = mainRef.current;
 
-        const setScrolled = (ev: Event) => {
+        const setScrolled = (_ev: Event) => {
             if (mainElement) {
                 if (mainElement.scrollTop > 10) {
                     setIsScrolled(true);
@@ -32,13 +34,15 @@ export const MainPage: React.FC = () => {
     }, []);
 
     return (
-        <MainGrid>
-            <Header isOpaque={isScrolled} />
-            <Sidebar currentPage={location.pathname} />
-            <main ref={mainRef}>
-                <Outlet />
-            </main>
-            <div style={{ backgroundColor: '#111', gridArea: 'controls' }} />
-        </MainGrid>
+        <PlaybackProvider>
+            <MainGrid>
+                <Header isOpaque={isScrolled} />
+                <Sidebar currentPage={location.pathname} />
+                <main ref={mainRef}>
+                    <Outlet />
+                </main>
+                <Player />
+            </MainGrid>
+        </PlaybackProvider>
     );
 };
