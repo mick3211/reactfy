@@ -1,4 +1,4 @@
-import { ClockIcon, PlayIcon } from '@radix-ui/react-icons';
+import { ClockIcon, PauseIcon, PlayIcon } from '@radix-ui/react-icons';
 import { usePlaylistDetailPage } from 'data/hooks/pages/usePlaylistDetail.page';
 import React from 'react';
 import {
@@ -14,7 +14,8 @@ import {
 } from 'ui/styles/pages/playlistDetail.styled';
 
 export const PlaylistDetailPage: React.FC = () => {
-    const { playlist } = usePlaylistDetailPage();
+    const { playlist, play, playerContext, togglePlay, isPaused, playTrack } =
+        usePlaylistDetailPage();
 
     if (!playlist) {
         return null;
@@ -64,9 +65,19 @@ export const PlaylistDetailPage: React.FC = () => {
                 </PlaylistInformation>
             </HeaderWrapper>
             <SongsWrapper>
-                <Button shape="circular">
-                    <PlayIcon width={32} height={32} />
-                </Button>
+                {playerContext?.uri !== playlist.uri ? (
+                    <Button shape="circular" onClick={() => play(playlist.uri)}>
+                        <PlayIcon width={32} height={32} />
+                    </Button>
+                ) : (
+                    <Button shape="circular" onClick={togglePlay}>
+                        {isPaused ? (
+                            <PlayIcon width={32} height={32} />
+                        ) : (
+                            <PauseIcon width={32} height={32} />
+                        )}
+                    </Button>
+                )}
 
                 <Table
                     data={playlist.tracks.items}
@@ -79,7 +90,10 @@ export const PlaylistDetailPage: React.FC = () => {
                         <ClockIcon width={16} height={16} />,
                     ]}
                     render={(item, index) => (
-                        <TableRow key={item.track.id}>
+                        <TableRow
+                            key={item.track.id}
+                            onClick={() => playTrack(item.track.uri)}
+                        >
                             <TableCell align="center">{index + 1}</TableCell>
                             <TableCell>
                                 <img

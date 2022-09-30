@@ -1,4 +1,5 @@
 import { playbackContext } from 'data/contexts/PlaybackContext';
+import { ApiService } from 'data/services/ApiService';
 import { useContext, useEffect, useState } from 'react';
 
 export function usePlayback(updateInterval?: number) {
@@ -36,6 +37,21 @@ export function usePlayback(updateInterval?: number) {
         }
     }
 
+    function play(uri: string, offset?: { position?: number; uri?: string }) {
+        ApiService.put(
+            '/me/player/play',
+            {
+                context_uri: uri,
+                offset,
+            },
+            {
+                params: {
+                    device_id: playerId,
+                },
+            }
+        );
+    }
+
     useEffect(() => {
         (async () => {
             const vol = await player?.getVolume();
@@ -69,5 +85,7 @@ export function usePlayback(updateInterval?: number) {
         isPaused,
         nextTrack,
         previousTrack,
+        play,
+        playerContext: playerState?.context,
     };
 }
