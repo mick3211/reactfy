@@ -13,7 +13,7 @@ export function LoginCallback() {
     const [error, setError] = useState('');
     const [params] = useSearchParams();
     const code = params.get('code') as string;
-    const redirectUri = 'http://127.0.0.1:5173/login/callback';
+    const redirectUri = import.meta.env.VITE_SPOTIFY_LOGIN_REDIRECT_URI;
     const client_id = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
     const client_secret = import.meta.env.VITE_SPOTIFY_CLIENT_SECRET;
     const searchParams = new URLSearchParams({
