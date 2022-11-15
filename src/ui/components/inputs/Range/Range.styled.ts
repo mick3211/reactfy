@@ -36,6 +36,7 @@ export const RangeWrapper = styled('span', {
         top: '50%',
         left: 0,
         right: 0,
+        width: '100%',
         transform: 'translateY(-50%)',
         zIndex: 1,
         opacity: 0,
