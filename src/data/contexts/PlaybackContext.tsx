@@ -31,7 +31,6 @@ export const PlaybackProvider: React.FC<PlaybackProviderProps> = ({
     const [playerState, setPlayerState] = useState<Spotify.PlaybackState>();
 
     window.onSpotifyWebPlaybackSDKReady = () => {
-        console.log('iniciado');
         setIsReady(true);
     };
 
@@ -55,10 +54,7 @@ export const PlaybackProvider: React.FC<PlaybackProviderProps> = ({
             });
             player.on('player_state_changed', state => {
                 setPlayerState(state);
-                console.log('atalizou');
             });
-
-            console.log(player);
 
             player.connect().then(success => setIsConnected(success));
         }
